@@ -10,7 +10,7 @@ class Monitor extends Component {
     render() {
         return (
             <div>
-               1111
+               监控页
             </div>
         );
     }
