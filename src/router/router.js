@@ -13,7 +13,7 @@ import {
 let  routes=[
     {
         title:'Dashboard',
-        path:'/',
+        path:'/dashboard',
         id:'1',
         component:basicLayout,
         icon: <SmileOutlined/>,

@@ -14,7 +14,7 @@ class BasicLayout extends Component {
      
     state={
          collapsed:false,
-         defaultOpenKeys: ['/'],       // 默认展开
+         defaultOpenKeys: ['/dashboard'],       // 默认展开
          defaultSelectedKeys: ['/dashboard/Analysis'],   // 默认选中
     }
     //控制左侧菜单收缩
@@ -73,8 +73,9 @@ class BasicLayout extends Component {
     //路由跳转
     handleChangePage=(obj:any)=>{
          
-       // history.push(obj.key);
+//      history.push(obj.key);
     }
+   
      render() {
        let name;
        if (!this.state.collapsed) {

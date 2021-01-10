@@ -11,6 +11,7 @@ export default class Islogin extends Component{
                 <Router>
                     {/* <Route path="/login" component={Login}/> */}
                       <Route path="/"  render={()=><Layout/>}/>
+                      <Redirect from="/" to="/dashboard/Analysis"/>
                 </Router>
           )
       }

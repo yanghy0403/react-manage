@@ -8,6 +8,7 @@ class Analysis extends Component {
         this.state = {  };
     }
     render() {
+      
         return (
             <div>分析页</div>
         );
