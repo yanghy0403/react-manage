@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import echarts from 'echarts-for-react'
+// import ReactEcharts  from 'echarts-for-react'
+import * as echarts from 'echarts';
 export default class Chart extends Component {
     constructor(props) {
         super(props);
@@ -11,9 +12,10 @@ export default class Chart extends Component {
     }
     //初始化
     initChart = el => {
-      
+        console.log(111);
         const renderer = 'canvas';
         var that =this;
+       
         return new Promise(resolve => {
             setTimeout(() => {
                 that.chart = echarts.init(el, null, {
@@ -21,6 +23,7 @@ export default class Chart extends Component {
                     width: 'auto',
                     height: 'auto'
                 });
+               
                 resolve();
             }, 0);
         });
@@ -71,9 +74,10 @@ export default class Chart extends Component {
           this.dispose ();
     }
     render() {
+      
         const {width,height} = this.state;
         return (
-            <div ref={el => (this.el = el)} style={{width,height}}></div>
+            <div ref={el => (this.el = el)} className="chart" style={{width,height}}></div>
         )
     }
 }

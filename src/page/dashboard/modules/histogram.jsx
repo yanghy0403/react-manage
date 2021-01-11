@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
 import {Card} from 'antd';
-import Chart from '../../../component/Chart/Chart'
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
+import 'echarts/lib/component/grid';
+ import Chart from '../../../component/Chart/Chart'
+import './histogram.scss'
 const tabListNoTitle = [
     {
-      key: '销售额',
+      key: '1',
       tab: '销售额',
     },
     {
-      key: '访问量',
+      key: '2',
       tab: '访问量',
     },
   
   ];
 export default class Histogram extends Component {
     state={
-        noTitleKey: '销售额',
+        noTitleKey: '1',
         contentListNoTitle:{
-            销售额: <Chart option={this.getOption}   notMerge={true} lazyUpdate={true} style={{width:'400px', height: '400px'}} />,
-            访问量: <p>访问量 content</p>,
+            '销售额': null,
+            '访问量': <p>访问量 content</p>,
         },
         option:{},//传给图形组件的配置
 
@@ -25,9 +29,11 @@ export default class Histogram extends Component {
     onTabChange = (key, type) => {
        
         this.setState({ [type]: key });
+        console.log(this.state);
       };
     //获取配置项
     getOption=()=>{
+         
           let data = {
             legend: ["订购量", "需求量"],
             xAxis: ["七匹狼(豪情)", "中华(硬)", "中华(软)", "中南海(5mg)", "中南海(金8mg)"],
@@ -67,6 +73,8 @@ export default class Histogram extends Component {
           color:["#516b91","#59c4e6","#edafda","#93b7e3","#a5e7f0","#cbb0e3"],
           series:data.series
       };
+  
+   
         return option;
     }
     
@@ -74,17 +82,21 @@ export default class Histogram extends Component {
       this.getOption();
   }
     render() {
+        // let width = 
         return (
             <Card
                 bordered={false}
                 style={{ width: '100%',height:"100%" }}
+                className="tab"
                 tabList={tabListNoTitle}
                 activeTabKey={this.state.noTitleKey}
                  onTabChange={key => {
                     this.onTabChange(key, 'noTitleKey');
                 }}
               >
-                {this.state.contentListNoTitle[this.state.noTitleKey]}
+              <div className="graph">
+                  {this.state.noTitleKey =='1'? <Chart  option={this.getOption()}/> :'暂无数据'}
+              </div>
             </Card>
         )
     }
