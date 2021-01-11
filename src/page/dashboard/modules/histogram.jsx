@@ -95,7 +95,7 @@ export default class Histogram extends Component {
                 }}
               >
               <div className="graph">
-                  {this.state.noTitleKey =='1'? <Chart  option={this.getOption()}/> :'暂无数据'}
+                  {this.state.noTitleKey ==='1'? <Chart  option={this.getOption()}/> :'暂无数据'}
               </div>
             </Card>
         )

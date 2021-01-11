@@ -12,7 +12,7 @@ export default class Chart extends Component {
     }
     //初始化
     initChart = el => {
-        console.log(111);
+      
         const renderer = 'canvas';
         var that =this;
        

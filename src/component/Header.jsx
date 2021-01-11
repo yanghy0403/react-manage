@@ -82,7 +82,7 @@ export default class HeaderBar extends Component {
         this.props.toggle();
     }
     //渲染面包屑
-    renderBreadcrumb =(menus)=>{
+    renderBreadcrumb =(Router)=>{
       
         var bread = flattenRoutes(Router);
         var arr= unique(bread);
@@ -104,14 +104,14 @@ export default class HeaderBar extends Component {
                 </Breadcrumb.Item>
             )
         })
-      
+    
         return extraBreadcrumbItems
     }
    
     render() {
-      
+        
         return (
-            <div>
+            <div className="header">
                 <Header className="site-layout-background flex">
 
                     <div className="collapse">
