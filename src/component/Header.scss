@@ -1,17 +1,20 @@
-.flex{
-    padding: 0!important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .collapse{
+.header{
+    .flex{
+        padding: 0!important;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
-        .ant-breadcrumb{
-            margin-left: 10px;
+        background: #fff!important;
+        .collapse{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .ant-breadcrumb{
+                margin-left: 10px;
+            }
         }
+       
     }
-   
 }
 
 .ant-dropdown-link{

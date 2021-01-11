@@ -1,0 +1,26 @@
+.ant-pro-grid-content{
+     width: 100%;
+}
+.card_page{
+    .title_icon{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .money{
+        font-size:30px;
+        line-height: 40px;
+        margin: 10px 0;
+    }
+    .up_down{
+        display: flex;
+        padding-bottom: 10px;
+        span{
+            padding-right: 20px;
+        }
+    }
+    .limit{
+        line-height: 40px;
+        border-top: 1px solid #ddd;
+    }
+}

@@ -1,7 +1,7 @@
 import basicLayout from '../layout/layout'
-import Analysis from '../page/Analysis'
-import Monitor from '../page/Monitor'
-import Workbench from '../page/Workbench'
+import Analysis from '../page/dashboard/Analysis'
+import Monitor from '../page/dashboard/Monitor'
+import Workbench from '../page/dashboard/Workbench'
 import Personal from '../page/Personal'
 import {
   

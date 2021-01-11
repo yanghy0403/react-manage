@@ -1,3 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+li{
+  text-decoration: none;
+}
+p{
+  margin: 0;
+  padding: 0;
+}
+
+
 .ant-layout .trigger {
     font-size: 18px;
     // line-height: 64px;
@@ -29,12 +42,12 @@
     }
   }
  
-  .site-layout {
-    .site-layout-background {
-      background: #fff;
-    }
+  // .site-layout {
+  //   .site-layout-background {
+  //     background: #fff;
+  //   }
    
-  }
+  // }
 
 .ant-layout{
   .ant-menu-dark {
