@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 // import ReactEcharts  from 'echarts-for-react'
 import * as echarts from 'echarts';
+  import  'echarts-liquidfill';
+  import "echarts-wordcloud";
 export default class Chart extends Component {
     constructor(props) {
         super(props);

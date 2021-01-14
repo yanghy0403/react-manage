@@ -42,12 +42,14 @@ p{
     }
   }
  
-  // .site-layout {
-  //   .site-layout-background {
-  //     background: #fff;
-  //   }
+  .site-layout {
+    overflow-y: auto;
+    height: 100vh;
+    // .site-layout-background {
+    //   background: #fff;
+    // }
    
-  // }
+  }
 
 .ant-layout{
   .ant-menu-dark {

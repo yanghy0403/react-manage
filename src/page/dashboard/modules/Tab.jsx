@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tabs,Card } from 'antd';
+import { Tabs } from 'antd';
 import './Tab.scss'
 const { TabPane } = Tabs;
 const list= [

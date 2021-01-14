@@ -23,18 +23,19 @@ export default class Histogram extends Component {
             '销售额': null,
             '访问量': <p>访问量 content</p>,
         },
-        option:{},//传给图形组件的配置
+       
 
     }
     onTabChange = (key, type) => {
        
         this.setState({ [type]: key });
-        console.log(this.state);
+    
       };
     //获取配置项
     getOption=()=>{
          
           let data = {
+          
             legend: ["订购量", "需求量"],
             xAxis: ["七匹狼(豪情)", "中华(硬)", "中华(软)", "中南海(5mg)", "中南海(金8mg)"],
             series: [
@@ -54,7 +55,13 @@ export default class Histogram extends Component {
       })
       
       let option =  {
-        
+            title:{
+              text:'销售趋势',
+              textStyle:{
+                 fontSize:16,
+                 fontFamily:'Arial'
+              }
+           },
           legend: {},
           grid: {
             top: "15%",

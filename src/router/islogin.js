@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router,Redirect,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Route} from 'react-router-dom'
 import Layout from '../layout/layout'
 export default class Islogin extends Component{
       // constructor(props) {
@@ -10,8 +10,8 @@ export default class Islogin extends Component{
           return(
                 <Router>
                     {/* <Route path="/login" component={Login}/> */}
-                      <Route path="/"  render={()=><Layout/>}/>
-                      <Redirect from="/" to="/dashboard/Analysis"/>
+                      <Route path="/*"  render={()=><Layout/>}/>
+                     
                 </Router>
           )
       }

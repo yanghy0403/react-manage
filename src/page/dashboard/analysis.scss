@@ -24,3 +24,12 @@
         border-top: 1px solid #ddd;
     }
 }
+@media screen and( max-width:1366px){
+.card_page{
+    .up_down{
+        span{
+            padding-right: 0;
+        }
+    }
+}
+}

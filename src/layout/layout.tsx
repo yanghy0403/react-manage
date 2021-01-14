@@ -73,25 +73,36 @@ class BasicLayout extends Component {
     //路由跳转
     handleChangePage=(obj:any)=>{
          
-//      history.push(obj.key);
+
+    }
+    componentDidMount(){
+
     }
    
      render() {
-       let name;
-       if (!this.state.collapsed) {
-         name = <span className="name">React管理后台</span>;
-       }
-      
+              let name;
+              if (!this.state.collapsed) {
+                 name = <span className="name">React管理后台</span>;
+              }
+              let pathname = window.location.pathname;
+              if(pathname ==='/'){
+                     pathname = '/dashboard/Analysis';
+              }
+              let selectedKey =  pathname  //设置defaultSelectedKeys
+              let openKey = "/"+ pathname.split("/")[1] //截取二级路由的一级路径，设置defaultOpenKeys
+            
+                
+             
           return (
                  <Layout>
-                       <Sider trigger={null} collapsible collapsed={this.state.collapsed} width={256} style={{ minHeight: '100vh' }} onCollapse={ this.toggle }>
+                       <Sider trigger={null} collapsible collapsed={this.state.collapsed}  style={{ height: '100vh' }} onCollapse={ this.toggle }>
                             <div className="logo">
                                      <img src={logo} alt="" className="custom-img"/>
                                      {name}
                             </div>
                             <Menu theme="dark" mode="inline" 
-                            defaultOpenKeys={ this.state.defaultOpenKeys }
-                             defaultSelectedKeys={ this.state.defaultSelectedKeys }
+                            defaultOpenKeys={ [openKey] }
+                             defaultSelectedKeys={ [selectedKey] }
                              onClick ={this.handleChangePage}>
                                   {this.renderMenu(router)}
                                  
