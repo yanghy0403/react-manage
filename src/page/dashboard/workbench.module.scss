@@ -1,0 +1,119 @@
+.head{
+    display: flex;
+    img{
+        display: block;
+        width: 90px;
+        height: 90px;
+    }
+    .info{
+        margin-left: 20px;
+        h3{
+            line-height: 40px;
+            font-size: 22px;
+        }
+        p{
+            color: rgba(0,0,0,.45);
+        }
+    }
+}
+.header{
+    background: #fff;
+    padding: 16px 24px;
+    padding-top: 12px;
+    .statis{
+        ul{
+             height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            li{
+                list-style: none;
+                 .title{
+                    color: rgba(0,0,0,.45);
+                 }
+                 .num{
+                     font-size: 20px;
+                 }
+            }
+        }
+    }
+}
+.row_content{
+     margin: 24px 24px 0;
+    
+     .module{
+           h3{
+                span:hover{
+                    color: #6d98ef;
+                    cursor: pointer;
+                }
+           }
+           p:nth-child(2){
+                min-height: 44px;
+            }
+          
+           p{
+             color: rgba(0,0,0,.45);
+             font-weight: 400;
+           }
+          
+     }
+     .wrap{
+         ul{
+             display: flex;
+             flex-wrap: wrap;
+             li{
+                 width: 25%;
+                 text-align: center;
+                 margin: 10px 0;
+             }
+             li:last-child{
+               >span{
+                    display: block;
+                    border: 1px solid #6d98ef;
+                    height: 30px;
+                    line-height: 30px;
+                    width: 60%;
+                    /* text-align: center; */
+                    margin: 0 auto;
+                    color: #6d98ef;
+               }
+             }
+         }
+     }
+     .dynamic{
+         display: flex;
+         border-bottom: 1px solid #ddd;
+         margin:0 20px;
+         padding: 20px 0;
+         dt{
+             margin-right: 20px;
+            img{
+                display: block;
+                width: 30px;
+                height: 30px;
+               
+            }
+         }
+         dd{
+             .title{
+                 line-height: 30px;
+             }
+             .date{
+                color: rgba(0,0,0,.45);
+             }
+         }
+     }
+     .partin{
+         display: flex;
+         flex-wrap: wrap;
+         li{
+             width: 50%;
+             display: flex;
+             justify-content: flex-start;
+             align-items: center;
+             margin: 15px 0;
+             padding-left: 20px;
+         }
+     }
+}

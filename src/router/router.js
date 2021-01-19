@@ -32,7 +32,7 @@ let  routes=[
             },
           
            {
-            title:'控制台',
+            title:'工作台',
             id:'1-3',
             path:'/dashboard/Workbench',
             component:Workbench
