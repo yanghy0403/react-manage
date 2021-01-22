@@ -1,0 +1,36 @@
+.header{
+    background: #fff;
+    padding: 16px 24px;
+    padding-top: 0px;
+    p{
+        line-height: 40px;
+    }
+}
+.row_content{
+    margin: 24px 24px 0;
+    // background-color: #fff;
+    
+        .step{
+            width: 60%;
+            margin: 0 auto;
+        }
+  
+}
+.input{
+   input{
+    border-top: none;
+    border-bottom: none;
+   }
+}
+.url_span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #efeeee;
+    span{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

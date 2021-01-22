@@ -1,0 +1,29 @@
+.wrap{
+    width: 60%;
+    margin: 0 auto;
+    .remind{
+        border: 1px solid#64a6e2;
+        background-color: #E6F7FF;
+        height: 40px;
+        line-height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >span:first-child{
+           padding-left: 15px;
+        }
+        span:last-child{
+            padding-right: 15px;
+        }
+    }
+    .detail{
+        ul{
+            margin-bottom: 20px;
+            li{
+                line-height: 40px;
+                margin: 10px 0;
+                text-align: left;
+            }
+        }
+    }
+}

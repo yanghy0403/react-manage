@@ -1,12 +1,14 @@
-import basicLayout from '../layout/layout'
+// import basicLayout from '../layout/layout'
 import Analysis from '../page/dashboard/Analysis'
 import Monitor from '../page/dashboard/Monitor'
 import Workbench from '../page/dashboard/Workbench'
 import Personal from '../page/Personal'
+import Stepform from '../page/form/Stepform'
+import Advanceform from '../page/form/Advanceform'
 import {
   
     UserOutlined,
-   
+    FormOutlined,
     SmileOutlined
   } from '@ant-design/icons';
 
@@ -14,9 +16,7 @@ let  routes=[
     {
         title:'Dashboard',
         path:'/dashboard',
-        id:'1',
-        component:basicLayout,
-        icon: <SmileOutlined/>,
+         icon: <SmileOutlined/>,
         routes:[
             {
                 title:'分析页',
@@ -29,6 +29,7 @@ let  routes=[
              id:'1-1',
              path:'/dashboard/Monitor',
              component:Monitor
+            
             },
           
            {
@@ -40,8 +41,25 @@ let  routes=[
         ]
     },
     {
+        title:'表单页',
+       path:'/form',
+        icon: <FormOutlined />,
+        routes:[
+            {
+                title:'分布表单',
+               path:'/form/step-form',
+                component:Stepform
+            },
+            {
+             title:'高级表单',
+            path:'/form/advanced-form',
+            component:Advanceform
+            },
+          
+        ]
+    },
+    {
         title:'个人页',
-        id:'2',
         path:'/personal',
         icon: <UserOutlined/>,
         component:Personal

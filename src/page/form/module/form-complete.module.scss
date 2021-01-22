@@ -1,0 +1,30 @@
+.completeinfo{
+    width: 60%;
+    margin: 0 auto;
+    .logo{
+        margin-bottom: 20px;
+        .logo_img{
+              font-size: 72px;
+              color: #52c41a;
+        }
+    }
+    .oper{
+        display: flex;
+        margin-bottom: 20px;
+        margin-top: 15px;
+        justify-content: center;
+        button{
+            margin-right: 10px;
+        }
+    }
+    .content{
+        width: 60%;
+        margin: 0 auto;
+  
+         li{
+             line-height: 40px;
+             margin: 10px 0;
+             text-align: left;
+         }
+    }
+}
