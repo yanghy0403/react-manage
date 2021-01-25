@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card ,Row,Col,Form, Input, Button,Select,DatePicker, Space,TimePicker } from 'antd'
+import { Card ,Row,Col,Form, Input, Select,DatePicker, Space,TimePicker,Button } from 'antd'
 import Tableform from './module/table-form'
 import style from './stepform.module.scss'
 import 'moment/locale/zh-cn';
@@ -17,7 +17,7 @@ const layout = {
   };
 export default class Advanceform extends Component {
     onFinish= (values)=>{
-       
+        console.log(values)
         // this.setState({
         //     from:values
         // })
@@ -41,6 +41,7 @@ export default class Advanceform extends Component {
 
                             <Form  
                             {...layout}
+                         
                              name="basic"
                              onFinish={this.onFinish}
                              onFinishFailed={this.onFinishFailed}
@@ -150,9 +151,18 @@ export default class Advanceform extends Component {
                                     </Row>
                                 </Card>
                                 <Card style={{marginTop:20}}>
-                                    <Tableform/>
+                                    <Row>
+                                        <Col span={24}>
+                                           <Tableform/>
+                                        </Col>
+                                    </Row>
                                 </Card>
+                                <div className={style.submit}>
+                                    <Button type="primary" htmlType="submit">提交</Button>
+                                    
+                                </div>
                             </Form>
+                           
                         </div>
                     </div>
             </div>

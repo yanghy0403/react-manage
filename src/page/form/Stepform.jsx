@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Row, Col, Steps,Card } from 'antd'
 import Fillform from './module/fill-form'
 import Configform from './module/config-form'

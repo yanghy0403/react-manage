@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import * as echarts from 'echarts';
+
 import Chart from '../../../component/Chart/Chart'
 export default class Radar extends Component {
     getOption= ()=>{

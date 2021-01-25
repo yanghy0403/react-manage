@@ -95,7 +95,7 @@ class BasicLayout extends Component {
              
           return (
                  <Layout>
-                       <Sider trigger={null} collapsible collapsed={this.state.collapsed}  style={{ height: '100vh' }} onCollapse={ this.toggle }>
+                       <Sider trigger={null} collapsible collapsed={this.state.collapsed}  style={{ height: '100vh',zIndex:100 }} onCollapse={ this.toggle }>
                             <div className="logo">
                                      <img src={logo} alt="" className="custom-img"/>
                                      {name}

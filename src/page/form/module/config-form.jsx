@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {InfoCircleFilled,CloseOutlined} from '@ant-design/icons'
-import { Form, Input, Button,Select  } from 'antd';
+import { Form, Input, Button  } from 'antd';
 import style from'./configform.module.scss'
 
 const layout = {
