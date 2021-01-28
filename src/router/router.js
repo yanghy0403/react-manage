@@ -5,8 +5,10 @@ import Workbench from '../page/dashboard/Workbench'
 import Personal from '../page/Personal'
 import Stepform from '../page/form/Stepform'
 import Advanceform from '../page/form/Advanceform'
+import Tablelist from '../page/list/Tablelist'
+import Basiclist from '../page/list/Basiclist'
 import {
-  
+    OrderedListOutlined,
     UserOutlined,
     FormOutlined,
     SmileOutlined
@@ -24,6 +26,7 @@ let  routes=[
                 path:'/dashboard/Analysis',
                 component:Analysis
             },
+           
             {
              title:'监控页',
              id:'1-1',
@@ -31,13 +34,13 @@ let  routes=[
              component:Monitor
             
             },
-          
-           {
-            title:'工作台',
-            id:'1-3',
-            path:'/dashboard/Workbench',
-            component:Workbench
-           }
+            {
+                title:'工作台',
+                id:'1-3',
+                path:'/dashboard/Workbench',
+                component: Workbench
+             },
+           
         ]
     },
     {
@@ -56,6 +59,24 @@ let  routes=[
             component:Advanceform
             },
           
+        ]
+    },
+    {
+        title:'列表页',
+        path:'/list',
+        icon: <OrderedListOutlined />,
+        // component:Personal
+        routes:[
+            {
+                title:'查询表格',
+                path:'/list/table-list',
+                component:Tablelist
+            },
+            {
+                title:'标准列表',
+                path:'/list/basic-list',
+                component:Basiclist
+            }
         ]
     },
     {

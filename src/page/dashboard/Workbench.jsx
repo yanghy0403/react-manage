@@ -32,16 +32,16 @@ const  Data=[
     }
  ]
 const forlist= (list)=>{
-    return list.map(item=>{
-         return <dl className={style.dynamic}>
-                <dt>
-                    <img src={logo} alt=""/>
-                </dt>
-                <dd>
-                      <p className={style.title}>{item.title}</p>
-                      <p className={style.date}>{item.date}</p>
-                </dd>
-         </dl>
+    return list.map((item,index)=>{
+         return <dl className={style.dynamic} key={index}>
+                    <dt>
+                        <img src={logo} alt=""/>
+                    </dt>
+                    <dd>
+                        <p className={style.title}>{item.title}</p>
+                        <p className={style.date}>{item.date}</p>
+                    </dd>
+            </dl>
     })
 }
 class Workbench extends Component {
@@ -55,8 +55,7 @@ class Workbench extends Component {
     render() {
        
         return (
-            <div className="ant-pro-grid-content" style={{margin:'-24px -24px 0',width:'auto'}}>
-               <div className="ant-pro-grid-content-children" style={{paddingBottom:50}}>
+            <div >
                    <Row style={{marginBottom:20}} className={style.header}>
                          <Col span={20}>
                               <div className={style.head}>
@@ -84,7 +83,7 @@ class Workbench extends Component {
                                  </ul>
                              </Col>
                    </Row>
-                   <div className={style.row_content}>
+                   <div className={style.row_content} style={{margin:24}}>
                         <Row>
                                 <Col span={16}>
                                    <Card title="进行中的项目" bodyStyle={{padding:0}}>
@@ -241,7 +240,7 @@ class Workbench extends Component {
                         </Row>
                    </div>
 
-               </div>
+              
             </div>
         );
     }

@@ -76,8 +76,7 @@ class Monitor extends Component<any,any> {
         let { Date } = this.state;
      
         return (
-            <div className="ant-pro-grid-content">
-               <div className="ant-pro-grid-content-children">
+          <div style={{margin:24}}>
                     <Row className="trading">
                           <Col span={18}>
                               <Card title="活动实时交易情况">
@@ -136,7 +135,7 @@ class Monitor extends Component<any,any> {
                              </Card>
                         </Col>
                     </Row>
-               </div>
+              
             </div>
         );
     }

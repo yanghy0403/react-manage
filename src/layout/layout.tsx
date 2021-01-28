@@ -10,6 +10,70 @@ import 'antd/dist/antd.css';
 import './layout.scss'
 const {Sider,Content} = Layout;
 const { SubMenu } = Menu;
+
+
+
+let route = router.map((item)=>{
+       return item.path;
+})
+
+const SliderMenu = ()=>{
+       let pathname = window.location.pathname;
+       if(pathname ==='/'){
+              pathname = '/dashboard/Analysis';
+       }
+     
+      let selectedKey =  pathname  //设置defaultSelectedKeys
+       let openKey = "/"+ pathname.split("/")[1] //截取二级路由的一级路径，设置defaultOpenKeys
+      
+       const [openKeys, setOpenKeys] = React.useState([openKey]); 
+     
+       const onOpenChange = (keys:any) => {
+             
+              const latestOpenKey = keys.find((key:any) => openKeys.indexOf(key) === -1);
+              if (route.indexOf(latestOpenKey) === -1) {
+                setOpenKeys(keys);
+              } else {
+                setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+              }
+       };
+
+       //遍历左侧餐单
+       const renderMenu = (menus:any)=>{
+              let Menus = menus.map((item:any)=>{
+                     if(item.routes){
+                            return <SubMenu key={item.path} title={
+                                     <span>
+                                            {item.icon}
+                                            <span>{item.title}</span>
+                                     </span>
+                            }>
+                                 {renderMenu(item.routes)}
+                            </SubMenu>
+                     }else{
+                         
+                         return <Menu.Item key={item.path} icon={item.icon ? item.icon:'' }>
+                                  <Link to={item.path}>{item.title}</Link> 
+                                </Menu.Item>
+                     }
+              })
+            
+              return Menus;
+       }
+           
+     return (
+               <Menu theme="dark" mode="inline" 
+                     defaultOpenKeys={ [openKey] }
+                     defaultSelectedKeys={ [selectedKey] }
+                     openKeys={openKeys} 
+                     onOpenChange={onOpenChange}
+                     >
+                     {renderMenu(router)}
+                     
+              </Menu>
+     )
+}
+
 class BasicLayout extends Component {
      
     state={
@@ -25,25 +89,7 @@ class BasicLayout extends Component {
            })
           
     }
-    //遍历左侧餐单
-    renderMenu = (menus:any)=>{
-           return menus.map((item:any)=>{
-                  if(item.routes){
-                         return <SubMenu key={item.path} title={
-                                  <span>
-                                         {item.icon}
-                                         <span>{item.title}</span>
-                                  </span>
-                         }>
-                              {this.renderMenu(item.routes)}
-                         </SubMenu>
-                  }else{
-                      return <Menu.Item key={item.path} icon={item.icon ? item.icon:'' }>
-                               <Link to={item.path}>{item.title}</Link> 
-                             </Menu.Item>
-                  }
-           })
-    }
+    
     //渲染路由
     forList=(List:any[])=>{
        
@@ -67,16 +113,12 @@ class BasicLayout extends Component {
                           newarr.push(item);
                     }
              })
-       
+         
          return newarr;
     }
-    //路由跳转
-    handleChangePage=(obj:any)=>{
-         
-
-    }
+   
     componentDidMount(){
-
+      
     }
    
      render() {
@@ -84,29 +126,18 @@ class BasicLayout extends Component {
               if (!this.state.collapsed) {
                  name = <span className="name">React管理后台</span>;
               }
-              let pathname = window.location.pathname;
-              if(pathname ==='/'){
-                     pathname = '/dashboard/Analysis';
-              }
-              let selectedKey =  pathname  //设置defaultSelectedKeys
-              let openKey = "/"+ pathname.split("/")[1] //截取二级路由的一级路径，设置defaultOpenKeys
+             
             
                 
              
           return (
                  <Layout>
-                       <Sider trigger={null} collapsible collapsed={this.state.collapsed}  style={{ height: '100vh',zIndex:100 }} onCollapse={ this.toggle }>
+                       <Sider trigger={null} collapsible collapsed={this.state.collapsed}  style={{ height: '100vh',zIndex:100}} onCollapse={ this.toggle } width={208}>
                             <div className="logo">
                                      <img src={logo} alt="" className="custom-img"/>
                                      {name}
                             </div>
-                            <Menu theme="dark" mode="inline" 
-                            defaultOpenKeys={ [openKey] }
-                             defaultSelectedKeys={ [selectedKey] }
-                             onClick ={this.handleChangePage}>
-                                  {this.renderMenu(router)}
-                                 
-                            </Menu>
+                            <SliderMenu/>
                        </Sider>
                        <Layout className="site-layout">
                             
@@ -114,15 +145,20 @@ class BasicLayout extends Component {
                               <Content
                                    className="site-layout-background"
                                    style={{
-                                        margin: '24px',
+                                       
                                          minHeight: 280,
                                         }}
                                        >
-                                         <Switch>
+                                    <div className="ant-pro-grid-content">
+                                       <div className="ant-pro-grid-content-children">
+                                          <Switch>
+                                          
+                                          {this.forList(router)}
+                                          <Redirect from="/*" to="/dashboard/Analysis"></Redirect>
+                                          </Switch>   
+                                      </div>
+                                   </div>
                                          
-                                            {this.forList(router)}
-                                            <Redirect from="/*" to="/dashboard/Analysis"></Redirect>
-                                        </Switch>   
                               </Content>
                          </Layout>
                       

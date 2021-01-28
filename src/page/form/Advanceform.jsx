@@ -29,14 +29,14 @@ export default class Advanceform extends Component {
     }
     render() {
         return (
-            <div className="ant-pro-grid-content" style={{ margin: '-24px -24px 0', width: 'auto' }}>
-                <div className="ant-pro-grid-content-children" style={{ paddingBottom: 50 }} className="advanceform">
+            <div >
+               
                         <Row style={{ marginBottom: 20 }} className={style.header}>
                             <Col span={24}>
                                 <p>高级表单常见于一次性输入和提交大批量数据的场景。</p>
                             </Col>
                         </Row>
-                        <div className={style.row_content}>
+                        <div className={style.row_content} style={{margin:24}}>
                             
 
                             <Form  
@@ -163,7 +163,7 @@ export default class Advanceform extends Component {
                                 </div>
                             </Form>
                            
-                        </div>
+                       
                     </div>
             </div>
         )

@@ -1,0 +1,25 @@
+
+.top{
+    padding: 24px 24px;
+    margin-bottom: 16px;
+    background: #fff;
+    button{
+        margin-right: 10px;
+    }
+}
+.table_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    >span{
+        font-size: 18px;
+    }
+    ul{
+        display: flex;
+        align-items: center;
+        li{
+            margin-right: 15px;
+        }
+    }
+}

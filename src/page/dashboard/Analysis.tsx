@@ -23,90 +23,88 @@ class Analysis extends Component<any,any> {
      
      
         return (
-            <div className="ant-pro-grid-content">
-                   <div className="ant-pro-grid-content-children">
-                       
-                               <Row gutter={24}>
-                                     <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
-                                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
-                                            <div className="card_page">
-                                                    <div className="title_icon">
-                                                        <span>总销售额</span>
-                                                        <QuestionCircleOutlined />
-                                                    </div>
-                                                    <p className="money">￥126560</p>
-                                                    <div className="up_down">
-                                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
-                                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
-                                                    </div>
-                                                    <p className="limit">日销售额￥12,423</p>
-                                            </div>
-                                         </Card>
-                                     </Col>
-                                     <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
-                                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
-                                            <div className="card_page">
-                                                    <div className="title_icon">
-                                                        <span>总销售额</span>
-                                                        <QuestionCircleOutlined />
-                                                    </div>
-                                                    <p className="money">￥126560</p>
-                                                    <div className="up_down">
-                                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
-                                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
-                                                    </div>
-                                                    <p className="limit">日销售额￥12,423</p>
-                                            </div>
-                                         </Card>
-                                     </Col>
-                                     <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
-                                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
-                                            <div className="card_page">
-                                                    <div className="title_icon">
-                                                        <span>总销售额</span>
-                                                        <QuestionCircleOutlined />
-                                                    </div>
-                                                    <p className="money">￥126560</p>
-                                                    <div className="up_down">
-                                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
-                                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
-                                                    </div>
-                                                    <p className="limit">日销售额￥12,423</p>
-                                            </div>
-                                         </Card>
-                                     </Col>
-                                     <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
-                                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
-                                            <div className="card_page">
-                                                    <div className="title_icon">
-                                                        <span>总销售额</span>
-                                                        <QuestionCircleOutlined />
-                                                    </div>
-                                                    <p className="money">￥126560</p>
-                                                    <div className="up_down">
-                                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
-                                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
-                                                    </div>
-                                                    <p className="limit">日销售额￥12,423</p>
-                                            </div>
-                                         </Card>
-                                     </Col>
-                               </Row>
-                               <Row style={{marginBottom:'24px'}}>
-                                     <Col span={16}>
+            <div style={{margin:24}}>
+                 <Row gutter={24}>
+                        <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
+                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
+                            <div className="card_page">
+                                    <div className="title_icon">
+                                        <span>总销售额</span>
+                                        <QuestionCircleOutlined />
+                                    </div>
+                                    <p className="money">￥126560</p>
+                                    <div className="up_down">
+                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
+                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
+                                    </div>
+                                    <p className="limit">日销售额￥12,423</p>
+                            </div>
+                            </Card>
+                        </Col>
+                        <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
+                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
+                            <div className="card_page">
+                                    <div className="title_icon">
+                                        <span>总销售额</span>
+                                        <QuestionCircleOutlined />
+                                    </div>
+                                    <p className="money">￥126560</p>
+                                    <div className="up_down">
+                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
+                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
+                                    </div>
+                                    <p className="limit">日销售额￥12,423</p>
+                            </div>
+                            </Card>
+                        </Col>
+                        <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
+                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
+                            <div className="card_page">
+                                    <div className="title_icon">
+                                        <span>总销售额</span>
+                                        <QuestionCircleOutlined />
+                                    </div>
+                                    <p className="money">￥126560</p>
+                                    <div className="up_down">
+                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
+                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
+                                    </div>
+                                    <p className="limit">日销售额￥12,423</p>
+                            </div>
+                            </Card>
+                        </Col>
+                        <Col span={6} className="ant-col-xs-24 ant-col-sm-12 ant-col-md-12 ant-col-lg-12 ant-col-xl-6" style={{marginBottom:'24px'}}>
+                        <Card  bordered={false} bodyStyle={{ padding: '20px 24px 8px'}}>
+                            <div className="card_page">
+                                    <div className="title_icon">
+                                        <span>总销售额</span>
+                                        <QuestionCircleOutlined />
+                                    </div>
+                                    <p className="money">￥126560</p>
+                                    <div className="up_down">
+                                        <span>周同比 12% <CaretUpOutlined style={{color:"#dc4848"}}/></span>
+                                        <span>日同比 11% <CaretDownOutlined style={{color:"#40e4ac"}}/></span>
+                                    </div>
+                                    <p className="limit">日销售额￥12,423</p>
+                            </div>
+                            </Card>
+                        </Col>
+                </Row>
+                <Row style={{marginBottom:'24px'}}>
+                        <Col span={16}>
 
-                                         <Histogram/>
-                                     </Col>
-                                     <Col span={8}>
-                                        <Card bodyStyle={{padding:0}}  bordered={false}>
-                                          
-                                            <ul>
-                                                <Tab/>
-                                            </ul>
-                                        </Card>
-                                     </Col>
-                               </Row>
-                               <Row >
+                            <Histogram/>
+                        </Col>
+                        <Col span={8}>
+                        <Card bodyStyle={{padding:0}}  bordered={false}>
+                            
+                            <ul>
+                                <Tab/>
+                            </ul>
+                        </Card>
+                        </Col>
+                </Row>
+                <Row >
                                      <Col span={12}>
                                           <Card  bordered={false} title="线上热门搜索">
                                                 <Row>
@@ -132,7 +130,7 @@ class Analysis extends Component<any,any> {
                                           </Card>
                                      </Col>
                                </Row>
-                   </div>
+                  
             </div>
         );
     }

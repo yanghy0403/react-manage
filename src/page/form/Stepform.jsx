@@ -57,14 +57,13 @@ const MyStep = () => {
     ]
     return (
 
-        <div className="ant-pro-grid-content" style={{ margin: '-24px -24px 0', width: 'auto' }}>
-            <div className="ant-pro-grid-content-children" style={{ paddingBottom: 50 }}>
+       <div>
                 <Row style={{ marginBottom: 20 }} className={style.header}>
                     <Col span={24}>
                         <p>将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。</p>
                     </Col>
                 </Row>
-                <div className={style.row_content}>
+                <div className={style.row_content} style={{margin:24}}>
                    <Card>
                       {/* <div className={style.wrap}> */}
                             <div className={style.step}>
@@ -81,7 +80,7 @@ const MyStep = () => {
                    </Card>
                 </div>
 
-            </div>
+           
         </div>
 
     )
