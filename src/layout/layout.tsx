@@ -4,7 +4,7 @@ import {Redirect,Route,Link,Switch } from 'react-router-dom'
 
 import {Layout,Menu} from 'antd';
  import router from '../router/router'  
-// import history from '../util/history'
+import Footer from '../component/Footer'
 import logo from '../assets/img/logo192.png';
 import 'antd/dist/antd.css';
 import './layout.scss'
@@ -145,8 +145,8 @@ class BasicLayout extends Component {
                               <Content
                                    className="site-layout-background"
                                    style={{
-                                       
-                                         minHeight: 280,
+                                       height:'auto',
+                                       minHeight: 'auto'
                                         }}
                                        >
                                     <div className="ant-pro-grid-content">
@@ -160,6 +160,7 @@ class BasicLayout extends Component {
                                    </div>
                                          
                               </Content>
+                              <Footer/>
                          </Layout>
                       
                  </Layout>

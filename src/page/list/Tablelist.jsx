@@ -1,6 +1,6 @@
 import React, { Component,useState  } from 'react'
 import moment from 'moment';
-import { Card ,Row,Col, Input,Button,Form,Table, Space,message,Tooltip,Modal, Menu, Dropdown,DatePicker,Typography } from 'antd'
+import { Card ,Row,Col, Input,Button,Form,Table, Space,message,Tooltip,Modal, Menu, Dropdown,DatePicker,Typography, Checkbox, Divider } from 'antd'
 import {
     PlusOutlined,
     ReloadOutlined,
@@ -15,7 +15,7 @@ const { TextArea } = Input;
 let defaultSelectedKeys= 'default';
 
 const dateFormat = 'YYYY-MM-DD HH:mm:ss';
-
+const CheckboxGroup = Checkbox.Group;
 const layout = {
     labelCol: { span: 24 },
     wrapperCol: { span: 24 },
@@ -25,9 +25,60 @@ const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
   };
+
+
+
+  const plainOptions = ['规则名称', '描述', '服务调用次数','状态','上次调度时间','操作'];
+  const defaultCheckedList = ['规则名称', '描述', '服务调用次数','状态','上次调度时间','操作'];
+//设置
+const CheckboxModal = (props)=>{
+    const [checkedList, setCheckedList] = React.useState(defaultCheckedList);
+  const [indeterminate, setIndeterminate] = React.useState(false);//false代表样式全选中状态,true代表未全部选中
+  const [checkAll, setCheckAll] = React.useState(true);//true代表数据选中状态
+   //选中状态
+  const onChange = list => {
+     
+    setCheckedList(list);
+    setIndeterminate(!!list.length && list.length < plainOptions.length);
+    setCheckAll(list.length === plainOptions.length);
+  
+    props.propsColumn(list);
+  };
+   //多选
+  const onCheckAllChange = e => {
+    
+    setCheckedList(e.target.checked ? plainOptions : []);
+    setIndeterminate(false);
+    setCheckAll(e.target.checked);
+   
+   
+  };
+  //类别重置
+  const onReset=()=>{
+    setCheckedList( plainOptions);
+    setIndeterminate(false);
+    setCheckAll(true);
+    props.propsColumn(plainOptions);
+  }
+  return (
+       <div className={style.Edit}>
+            <div className={style.header}>
+                <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
+                   列展示
+                </Checkbox>
+                <Typography.Link onClick={onReset}>重置</Typography.Link>
+            </div>
+            <Divider style={{margin:'5px 0'}}/>
+            <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
+       </div>
+  )
+}
+
+  //表格头部查询表格一系列功能组件
 const TableModl = (props)=>{
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = React.useState(false);
+    let isEdit= false;
   //点击新建
   const showModal = () => {
     setIsModalVisible(true);
@@ -61,6 +112,7 @@ const TableModl = (props)=>{
     defaultSelectedKeys = item.key;
     Setdensity(item.key);
 }
+
 
 const menu = (
  <Menu selectable defaultSelectedKeys={[defaultSelectedKeys]} onClick={handleClickMenu}>
@@ -100,7 +152,9 @@ const menu = (
                         </li>
                         <li>
                             <Tooltip placement="top" title="列设置">
-                                <SettingOutlined />
+                                <Dropdown overlay={<CheckboxModal propsColumn={props.propsColumn}/>} trigger={['click']} arrow placement="bottomRight" getPopupContainer={triggerNode => triggerNode.parentNode}>
+                                     <SettingOutlined/>
+                                 </Dropdown>
                             </Tooltip>
                             
                         </li>
@@ -116,6 +170,7 @@ const menu = (
                      </Form.Item>
                 </Form>
             </Modal>
+           
       </div>
   )
 }
@@ -191,8 +246,72 @@ export default class Tablelist extends Component {
                     )
                   },
              ],
+             columns1:[
+                {
+                  title: '规则名称',
+                  dataIndex: 'ruleName',
+                  key: 'ruleName',
+                  align:'center'
+                },
+                {
+                  title: '描述',
+                  dataIndex: 'desc',
+                  key: 'desc',
+                  width:'30%',
+                  align:'center'
+                },
+                {
+                  title: '服务调用次数',
+                  dataIndex: 'num',
+                  key: 'num',
+                  align:'center'
+                },
+                {
+                  title: '状态',
+                  dataIndex: 'status',
+                  key: 'status',
+                  align:'center',
+                  render:(status)=>{
+                      switch(status){
+                          case 1:
+                          status= '运行完成'
+                          break;
+                          case 2:
+                          status= '运行中'
+                            break;
+                          case 3:
+                           status='异常' 
+                           break;
+                          case 4:
+                           status = "关闭"
+                           break;
+                          default:
+                           status="运行完成"
+                           break;
+                      }
+                    return status;
+                  }
+                },
+                {
+                  title: '上次调度时间',
+                  dataIndex: 'prevdate',
+                  key: 'prevdate',
+                  align:'center'
+                },
+                {
+                  title: '操作',
+                  dataIndex: 'oper',
+                  key: 'oper',
+                  align:'center',
+                  render:(record)=>(
+                    <Space size="middle">
+                        <Typography.Link>编辑</Typography.Link>
+                        <Typography.Link>订阅</Typography.Link>
+                    </Space>
+                  )
+                },
+           ],
              data:[],
-            
              loading:false,
              pagination:{
                  current:1,
@@ -200,10 +319,15 @@ export default class Tablelist extends Component {
                  total:0
              },
              size:'default',
-             Form:{}
+             Form:{},
+             selectedRowKeys:[],//默认选中项的key
+             selectedRows:[],//选中项数据
+             count:0,//统计综合
+            selectColumn:[],//选中的column
         }
     }
     formRef = React.createRef();
+    
     //获取表格数据
     getData=()=>{
        var url= baseUrl + '/table-list';
@@ -259,27 +383,66 @@ export default class Tablelist extends Component {
           this.setState({
             Form:form
           })
-        
+       this.getData();
       };
       //重置
       onReset = () => {
         this.formRef.current.resetFields();
       };
-      onOk=(value)=> {
+
+      //表格选中项发生变化
+      onSelectChange=(selectedRowKeys,selectedRows )=>{
+        this.setState({ selectedRowKeys });
        
-       let formateDate = moment(value).format(dateFormat);
-       console.log(formateDate);
-       this.setState({
-        prevDate:formateDate
-       })
-   
+        let count = selectedRows.reduce((prev,cur)=>{
+            return prev + cur.num;
+        },0)
+        this.setState({count});
+      
       }
+      //批量审批
+      handleApproval=()=>{
+
+      }
+      //批量删除
+      handleDelete=()=>{
+          this.setState({
+              selectedRowKeys:[],
+          })
+          this.getData();
+          setTimeout(()=>{
+              message.success('删除成功')
+          },1000)
+      }
+      //接收子组件传过来的类别
+      propsColumn=(list)=>{
+        
+          let {columns1} = this.state;
+          let newColumn = [];
+           columns1.forEach(item=>{
+                list.forEach(each=>{
+                     if(item.title === each){
+                        newColumn.push(item)
+                     };
+                })
+          })
+         
+         this.setState({
+             columns:[...newColumn]
+         })
+         
+      }
+
     componentDidMount(){
           this.getData();
     }
     render() {
-        let {columns,data,pagination,loading } =  this.state;
-      
+        let {columns,data,pagination,loading,selectedRowKeys  } =  this.state;
+        const rowSelection ={
+            selectedRowKeys,
+            onChange:this.onSelectChange
+        }
+       
         return (
             <div>
                 <Row style={{ marginBottom: 20 }} className="header_title">
@@ -290,28 +453,28 @@ export default class Tablelist extends Component {
                 <div className="content_main">
                      <div className={style.top}>
                         <Form {...talout} ref={this.formRef} onFinish={this.onFinish}>
-                                <Row gutter={24} >
-                                    <Col span={6}>
+                                <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}} >
+                                    <Col span={8}>
                                             <Form.Item label="规则名称" name="ruleName">
                                                 <Input placeholder="请输入"/>
                                             </Form.Item>
                                     </Col>
-                                    <Col span={6}>
+                                    <Col span={8}>
                                             <Form.Item label="描述" name="description">
                                                 <Input placeholder="请输入"/>
                                             </Form.Item>
                                     </Col>
-                                    <Col span={6}>
+                                    <Col span={8}>
                                             <Form.Item label="服务调用次数" name="num">
                                                 <Input placeholder="请输入"/>
                                             </Form.Item>
                                     </Col>
-                                    <Col span={6}>
+                                    <Col span={8}>
                                             <Form.Item label="上次调度时间" name="prevDate" >
-                                               <DatePicker showTime format={dateFormat}/>
+                                               <DatePicker showTime format={dateFormat} style={{ width: '100%'}}/>
                                             </Form.Item>
                                     </Col>
-                                    <Col span={6}>
+                                    <Col span={8}>
                                            <Form.Item>
                                                <Button htmlType="button" onClick={this.onReset}>重置</Button>
                                                <Button type="primary" htmlType="submit">查询</Button>
@@ -322,15 +485,23 @@ export default class Tablelist extends Component {
                         </Form>
                      </div>
                      <div className="table" style={{marginBottom:50}}>
-                         
-                         <Card >
-                             <TableModl handleReload={this.handleReload} Setdensity={this.Setdensity}/>
-                             <Table columns={columns} dataSource={data} rowKey="id" pagination={pagination} loading={loading} onChange={this.handleChange} size={this.state.size}/>
-                           
-                            
-                         </Card>
+                          <Card >
+                             <TableModl handleReload={this.handleReload} Setdensity={this.Setdensity} propsColumn={this.propsColumn}/>
+                             <Table columns={columns} dataSource={data} rowKey="id" pagination={pagination} loading={loading} onChange={this.handleChange} size={this.state.size} rowSelection={rowSelection}/>
+                          </Card>
                      </div>
                 </div>
+                {
+                     this.state.selectedRowKeys.length>0 ? (
+                        <div className={style.footer}>
+                                <p>已选择{this.state.selectedRowKeys.length} 项 服务调用次数总计 {this.state.count}</p>
+                                <p>
+                                    <Button onClick={this.handleDelete}>批量删除</Button>
+                                    <Button type="primary" onClick={this.handleApproval}>批量审批</Button>
+                                </p>
+                        </div>
+                     ):null
+                }
             </div>
         )
     }
